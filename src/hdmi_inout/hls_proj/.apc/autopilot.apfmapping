@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="dma_master_driver_hls.cpp" path="D:\Xilinx\repo\project532\FPGA-Upscaler\dma_driver_hls\dma_master_driver_hls.cpp"/>
+    <originFiles name="dma_master_driver_hls.cpp" path="D:\Xilinx\repo\project532\FPGA-Upscaler\dma_driver_hls\dma_master_driver_hls.cpp"/>
+  </source>
+  <testbench/>
+</autopilotfilemapping:AutoPilotFileMapping>

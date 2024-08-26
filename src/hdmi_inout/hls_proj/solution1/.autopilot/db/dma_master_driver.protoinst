@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"dma_master_driver": {
+			"proto_instances": {
+			}
+		}
+	}
+}

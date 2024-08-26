@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"dma_mm2reg": {
+			"proto_instances": {
+			}
+		}
+	}
+}

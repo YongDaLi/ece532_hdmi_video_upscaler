@@ -1,0 +1,275 @@
+
+
+================================================================
+== Vivado HLS Report for 'dma_master_driver'
+================================================================
+* Date:           Wed Mar 29 23:24:17 2023
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        hls_proj
+* Solution:       solution1
+* Product family: artix7
+* Target device:  xc7a200tsbg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.750|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------------+------------------+-----+-----+-----+-----+---------+
+        |                            |                  |  Latency  |  Interval | Pipeline|
+        |          Instance          |      Module      | min | max | min | max |   Type  |
+        +----------------------------+------------------+-----+-----+-----+-----+---------+
+        |grp_transfer_chunk_1_fu_87  |transfer_chunk_1  |    ?|    ?|    ?|    ?|   none  |
+        |grp_transfer_chunk_fu_95    |transfer_chunk    |    ?|    ?|    ?|    ?|   none  |
+        +----------------------------+------------------+-----+-----+-----+-----+---------+
+
+        * Loop: 
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |             |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        |  Loop Name  | min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1     |    ?|    ?|         ?|          -|          -|  inf |    no    |
+        | + Loop 1.1  |    ?|    ?|         ?|          -|          -|   900|    no    |
+        +-------------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      1|       -|       -|
+|Expression       |        -|      -|       0|      30|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        2|      -|    1942|    5850|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|     618|
+|Register         |        -|      -|      76|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        2|      1|    2018|    6498|
++-----------------+---------+-------+--------+--------+
+|Available        |      730|    740|  269200|  129000|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |    ~0   |   ~0  |   ~0   |       5|
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    +--------------------------------+------------------------------+---------+-------+-----+------+
+    |            Instance            |            Module            | BRAM_18K| DSP48E|  FF |  LUT |
+    +--------------------------------+------------------------------+---------+-------+-----+------+
+    |dma_master_driver_dma0_m_axi_U  |dma_master_driver_dma0_m_axi  |        2|      0|  512|   580|
+    |dma_master_driverbkb_U11        |dma_master_driverbkb          |        0|      0|  226|   140|
+    |grp_transfer_chunk_fu_95        |transfer_chunk                |        0|      0|  602|  2565|
+    |grp_transfer_chunk_1_fu_87      |transfer_chunk_1              |        0|      0|  602|  2565|
+    +--------------------------------+------------------------------+---------+-------+-----+------+
+    |Total                           |                              |        2|      0| 1942|  5850|
+    +--------------------------------+------------------------------+---------+-------+-----+------+
+
+    * DSP48: 
+    +--------------------------+----------------------+-----------+
+    |         Instance         |        Module        | Expression|
+    +--------------------------+----------------------+-----------+
+    |dma_master_drivercud_U12  |dma_master_drivercud  |  i0 * i1  |
+    +--------------------------+----------------------+-----------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +-----------------------+----------+-------+---+----+------------+------------+
+    |     Variable Name     | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +-----------------------+----------+-------+---+----+------------+------------+
+    |chunk_ctr_1_fu_114_p2  |     +    |      0|  0|  17|          10|           1|
+    |exitcond_fu_108_p2     |   icmp   |      0|  0|  13|          10|           8|
+    +-----------------------+----------+-------+---+----+------------+------------+
+    |Total                  |          |      0|  0|  30|          20|           9|
+    +-----------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +------------------+-----+-----------+-----+-----------+
+    |       Name       | LUT | Input Size| Bits| Total Bits|
+    +------------------+-----+-----------+-----+-----------+
+    |ap_NS_fsm         |  129|         28|    1|         28|
+    |chunk_ctr_reg_76  |    9|          2|   10|         20|
+    |dma0_ARADDR       |   15|          3|   32|         96|
+    |dma0_ARBURST      |   15|          3|    2|          6|
+    |dma0_ARCACHE      |   15|          3|    4|         12|
+    |dma0_ARID         |   15|          3|    1|          3|
+    |dma0_ARLEN        |   15|          3|   32|         96|
+    |dma0_ARLOCK       |   15|          3|    2|          6|
+    |dma0_ARPROT       |   15|          3|    3|          9|
+    |dma0_ARQOS        |   15|          3|    4|         12|
+    |dma0_ARREGION     |   15|          3|    4|         12|
+    |dma0_ARSIZE       |   15|          3|    3|          9|
+    |dma0_ARUSER       |   15|          3|    1|          3|
+    |dma0_ARVALID      |   15|          3|    1|          3|
+    |dma0_AWADDR       |   15|          3|   32|         96|
+    |dma0_AWBURST      |   15|          3|    2|          6|
+    |dma0_AWCACHE      |   15|          3|    4|         12|
+    |dma0_AWID         |   15|          3|    1|          3|
+    |dma0_AWLEN        |   15|          3|   32|         96|
+    |dma0_AWLOCK       |   15|          3|    2|          6|
+    |dma0_AWPROT       |   15|          3|    3|          9|
+    |dma0_AWQOS        |   15|          3|    4|         12|
+    |dma0_AWREGION     |   15|          3|    4|         12|
+    |dma0_AWSIZE       |   15|          3|    3|          9|
+    |dma0_AWUSER       |   15|          3|    1|          3|
+    |dma0_AWVALID      |   15|          3|    1|          3|
+    |dma0_BREADY       |   15|          3|    1|          3|
+    |dma0_RREADY       |   15|          3|    1|          3|
+    |dma0_WDATA        |   15|          3|   32|         96|
+    |dma0_WID          |   15|          3|    1|          3|
+    |dma0_WLAST        |   15|          3|    1|          3|
+    |dma0_WSTRB        |   15|          3|    4|         12|
+    |dma0_WUSER        |   15|          3|    1|          3|
+    |dma0_WVALID       |   15|          3|    1|          3|
+    +------------------+-----+-----------+-----+-----------+
+    |Total             |  618|        126|  231|        708|
+    +------------------+-----+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------------+----+----+-----+-----------+
+    |                   Name                  | FF | LUT| Bits| Const Bits|
+    +-----------------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                                |  27|   0|   27|          0|
+    |chunk_ctr_1_reg_175                      |  10|   0|   10|          0|
+    |chunk_ctr_reg_76                         |  10|   0|   10|          0|
+    |grp_transfer_chunk_1_fu_87_ap_start_reg  |   1|   0|    1|          0|
+    |grp_transfer_chunk_fu_95_ap_start_reg    |   1|   0|    1|          0|
+    |input_row_reg_190                        |   8|   0|   10|          2|
+    |tmp_1_reg_185                            |   8|   0|    8|          0|
+    |tmp_2_reg_196                            |  11|   0|   11|          0|
+    +-----------------------------------------+----+----+-----+-----------+
+    |Total                                    |  76|   0|   78|          2|
+    +-----------------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++---------------------+-----+-----+--------------+-------------------+--------------+
+|      RTL Ports      | Dir | Bits|   Protocol   |   Source Object   |    C Type    |
++---------------------+-----+-----+--------------+-------------------+--------------+
+|ap_clk               |  in |    1| ap_ctrl_none | dma_master_driver | return value |
+|ap_rst_n             |  in |    1| ap_ctrl_none | dma_master_driver | return value |
+|m_axi_dma0_AWVALID   | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWREADY   |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWADDR    | out |   32|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWID      | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWLEN     | out |    8|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWSIZE    | out |    3|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWBURST   | out |    2|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWLOCK    | out |    2|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWCACHE   | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWPROT    | out |    3|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWQOS     | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWREGION  | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_AWUSER    | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WVALID    | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WREADY    |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WDATA     | out |   32|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WSTRB     | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WLAST     | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WID       | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_WUSER     | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARVALID   | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARREADY   |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARADDR    | out |   32|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARID      | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARLEN     | out |    8|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARSIZE    | out |    3|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARBURST   | out |    2|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARLOCK    | out |    2|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARCACHE   | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARPROT    | out |    3|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARQOS     | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARREGION  | out |    4|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_ARUSER    | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RVALID    |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RREADY    | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RDATA     |  in |   32|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RLAST     |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RID       |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RUSER     |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_RRESP     |  in |    2|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_BVALID    |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_BREADY    | out |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_BRESP     |  in |    2|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_BID       |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma0_BUSER     |  in |    1|     m_axi    |        dma0       |    pointer   |
+|m_axi_dma1_AWVALID   | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWREADY   |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWADDR    | out |   32|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWID      | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWLEN     | out |    8|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWSIZE    | out |    3|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWBURST   | out |    2|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWLOCK    | out |    2|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWCACHE   | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWPROT    | out |    3|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWQOS     | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWREGION  | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_AWUSER    | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WVALID    | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WREADY    |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WDATA     | out |   32|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WSTRB     | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WLAST     | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WID       | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_WUSER     | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARVALID   | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARREADY   |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARADDR    | out |   32|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARID      | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARLEN     | out |    8|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARSIZE    | out |    3|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARBURST   | out |    2|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARLOCK    | out |    2|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARCACHE   | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARPROT    | out |    3|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARQOS     | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARREGION  | out |    4|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_ARUSER    | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RVALID    |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RREADY    | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RDATA     |  in |   32|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RLAST     |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RID       |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RUSER     |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_RRESP     |  in |    2|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_BVALID    |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_BREADY    | out |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_BRESP     |  in |    2|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_BID       |  in |    1|     m_axi    |        dma1       |    pointer   |
+|m_axi_dma1_BUSER     |  in |    1|     m_axi    |        dma1       |    pointer   |
+|frame_trigger_V      |  in |    1|    ap_none   |  frame_trigger_V  |    scalar    |
++---------------------+-----+-----+--------------+-------------------+--------------+
+

@@ -1,0 +1,203 @@
+
+
+================================================================
+== Vivado HLS Report for 'transfer_chunk_1'
+================================================================
+* Date:           Wed Mar 29 23:24:14 2023
+
+* Version:        2018.3 (Build 2405991 on Thu Dec 06 23:56:15 MST 2018)
+* Project:        hls_proj
+* Solution:       solution1
+* Product family: artix7
+* Target device:  xc7a200tsbg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|     8.750|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    ?|    ?|    ?|    ?|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        +----------------------+------------+-----+-----+-----+-----+---------+
+        |                      |            |  Latency  |  Interval | Pipeline|
+        |       Instance       |   Module   | min | max | min | max |   Type  |
+        +----------------------+------------+-----+-----+-----+-----+---------+
+        |grp_transfer_1_fu_75  |transfer_1  |    ?|    ?|    ?|    ?|   none  |
+        +----------------------+------------+-----+-----+-----+-----+---------+
+
+        * Loop: 
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |          |  Latency  | Iteration|  Initiation Interval  | Trip |          |
+        | Loop Name| min | max |  Latency |  achieved |   target  | Count| Pipelined|
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+        |- Loop 1  |    ?|    ?|         ?|          -|          -|     4|    no    |
+        +----------+-----+-----+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-------+--------+--------+
+|       Name      | BRAM_18K| DSP48E|   FF   |   LUT  |
++-----------------+---------+-------+--------+--------+
+|DSP              |        -|      -|       -|       -|
+|Expression       |        -|      -|       0|     153|
+|FIFO             |        -|      -|       -|       -|
+|Instance         |        -|      -|      20|     205|
+|Memory           |        -|      -|       -|       -|
+|Multiplexer      |        -|      -|       -|    2207|
+|Register         |        -|      -|     582|       -|
++-----------------+---------+-------+--------+--------+
+|Total            |        0|      0|     602|    2565|
++-----------------+---------+-------+--------+--------+
+|Available        |      730|    740|  269200|  129000|
++-----------------+---------+-------+--------+--------+
+|Utilization (%)  |        0|      0|   ~0   |       1|
++-----------------+---------+-------+--------+--------+
+
++ Detail: 
+    * Instance: 
+    +----------------------+------------+---------+-------+----+-----+
+    |       Instance       |   Module   | BRAM_18K| DSP48E| FF | LUT |
+    +----------------------+------------+---------+-------+----+-----+
+    |grp_transfer_1_fu_75  |transfer_1  |        0|      0|  20|  205|
+    +----------------------+------------+---------+-------+----+-----+
+    |Total                 |            |        0|      0|  20|  205|
+    +----------------------+------------+---------+-------+----+-----+
+
+    * DSP48: 
+    N/A
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +--------------------+----------+-------+---+----+------------+------------+
+    |    Variable Name   | Operation| DSP48E| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +--------------------+----------+-------+---+----+------------+------------+
+    |i_1_fu_118_p2       |     +    |      0|  0|  12|           3|           1|
+    |tmp2_fu_161_p2      |     +    |      0|  0|  32|          32|          32|
+    |tmp_7_fu_167_p2     |     +    |      0|  0|  32|          32|          32|
+    |tmp_fu_124_p2       |     +    |      0|  0|  17|          10|          10|
+    |tmp1_fu_151_p2      |     -    |      0|  0|  30|          23|          23|
+    |tmp_6_fu_98_p2      |     -    |      0|  0|  21|          14|          14|
+    |exitcond_fu_112_p2  |   icmp   |      0|  0|   9|           3|           4|
+    +--------------------+----------+-------+---+----+------------+------------+
+    |Total               |          |      0|  0| 153|         117|         116|
+    +--------------------+----------+-------+---+----+------------+------------+
+
+    * Multiplexer: 
+    +-------------------+------+-----------+-----+-----------+
+    |        Name       |  LUT | Input Size| Bits| Total Bits|
+    +-------------------+------+-----------+-----+-----------+
+    |ap_NS_fsm          |  2153|        502|    1|        502|
+    |i_reg_64           |     9|          2|    3|          6|
+    |m_axi_dma_ARVALID  |     9|          2|    1|          2|
+    |m_axi_dma_AWVALID  |     9|          2|    1|          2|
+    |m_axi_dma_BREADY   |     9|          2|    1|          2|
+    |m_axi_dma_RREADY   |     9|          2|    1|          2|
+    |m_axi_dma_WVALID   |     9|          2|    1|          2|
+    +-------------------+------+-----------+-----+-----------+
+    |Total              |  2207|        514|    9|        518|
+    +-------------------+------+-----------+-----+-----------+
+
+    * Register: 
+    +-----------------------------------+-----+----+-----+-----------+
+    |                Name               |  FF | LUT| Bits| Const Bits|
+    +-----------------------------------+-----+----+-----+-----------+
+    |ap_CS_fsm                          |  501|   0|  501|          0|
+    |grp_transfer_1_fu_75_ap_start_reg  |    1|   0|    1|          0|
+    |i_1_reg_185                        |    3|   0|    3|          0|
+    |i_reg_64                           |    3|   0|    3|          0|
+    |tmp_6_cast_reg_177                 |   32|   0|   32|          0|
+    |tmp_7_reg_196                      |   32|   0|   32|          0|
+    |tmp_reg_190                        |   10|   0|   10|          0|
+    +-----------------------------------+-----+----+-----+-----------+
+    |Total                              |  582|   0|  582|          0|
+    +-----------------------------------+-----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++--------------------+-----+-----+------------+------------------+--------------+
+|      RTL Ports     | Dir | Bits|  Protocol  |   Source Object  |    C Type    |
++--------------------+-----+-----+------------+------------------+--------------+
+|ap_clk              |  in |    1| ap_ctrl_hs | transfer_chunk.1 | return value |
+|ap_rst              |  in |    1| ap_ctrl_hs | transfer_chunk.1 | return value |
+|ap_start            |  in |    1| ap_ctrl_hs | transfer_chunk.1 | return value |
+|ap_done             | out |    1| ap_ctrl_hs | transfer_chunk.1 | return value |
+|ap_idle             | out |    1| ap_ctrl_hs | transfer_chunk.1 | return value |
+|ap_ready            | out |    1| ap_ctrl_hs | transfer_chunk.1 | return value |
+|m_axi_dma_AWVALID   | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWREADY   |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWADDR    | out |   32|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWID      | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWLEN     | out |   32|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWSIZE    | out |    3|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWBURST   | out |    2|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWLOCK    | out |    2|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWCACHE   | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWPROT    | out |    3|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWQOS     | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWREGION  | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_AWUSER    | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WVALID    | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WREADY    |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WDATA     | out |   32|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WSTRB     | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WLAST     | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WID       | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_WUSER     | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARVALID   | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARREADY   |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARADDR    | out |   32|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARID      | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARLEN     | out |   32|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARSIZE    | out |    3|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARBURST   | out |    2|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARLOCK    | out |    2|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARCACHE   | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARPROT    | out |    3|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARQOS     | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARREGION  | out |    4|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_ARUSER    | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RVALID    |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RREADY    | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RDATA     |  in |   32|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RLAST     |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RID       |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RUSER     |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_RRESP     |  in |    2|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_BVALID    |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_BREADY    | out |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_BRESP     |  in |    2|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_BID       |  in |    1|    m_axi   |        dma       |    pointer   |
+|m_axi_dma_BUSER     |  in |    1|    m_axi   |        dma       |    pointer   |
+|row                 |  in |   10|   ap_none  |        row       |    scalar    |
+|col                 |  in |   11|   ap_none  |        col       |    scalar    |
++--------------------+-----+-----+------------+------------------+--------------+
+
