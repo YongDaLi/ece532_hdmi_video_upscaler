@@ -3,10 +3,7 @@
 ECE532 spring 2023 - digital systems design, group 2
 University of Toronto
 
-Benjamin Cheng
-Jay Mohile
-Leo Han
-Yong Da Li
+Benjamin Cheng, Jay Mohile, Leo Han, Yong Da Li
 
 ## Initial Goals
 
